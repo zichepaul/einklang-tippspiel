@@ -22,9 +22,9 @@ export async function adminConfigHandler(
   });
 }
 
-app.http('adminConfig', {
+app.http('showconfig', {
   methods: ['GET'],
   authLevel: 'anonymous',
-  route: 'adminConfig',
+  route: 'showconfig',
   handler: adminConfigHandler,
 });

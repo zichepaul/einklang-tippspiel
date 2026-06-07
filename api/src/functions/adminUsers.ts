@@ -76,9 +76,9 @@ export async function adminUsersHandler(
   return ok({ email, isAdmin: body.isAdmin, adminEmails: updated.adminEmails });
 }
 
-app.http('adminUsers', {
+app.http('manageusers', {
   methods: ['GET', 'PUT'],
   authLevel: 'anonymous',
-  route: 'adminUsers',
+  route: 'manageusers',
   handler: adminUsersHandler,
 });

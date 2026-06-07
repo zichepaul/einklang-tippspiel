@@ -64,9 +64,9 @@ export async function adminResultHandler(
   });
 }
 
-app.http('adminResult', {
+app.http('setresult', {
   methods: ['PUT'],
   authLevel: 'anonymous',
-  route: 'adminResult',
+  route: 'setresult',
   handler: adminResultHandler,
 });

@@ -25,9 +25,9 @@ export async function adminSyncHandler(
   }
 }
 
-app.http('adminSync', {
+app.http('runsync', {
   methods: ['POST'],
   authLevel: 'anonymous',
-  route: 'adminSync',
+  route: 'runsync',
   handler: adminSyncHandler,
 });
