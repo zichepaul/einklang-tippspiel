@@ -470,6 +470,20 @@ main.container {
   color: var(--ek-ink);
 }
 
+/* ----- Standings (Gruppentabellen) ------------------------------------- */
+
+.standings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.table tr.qualifies td:first-child {
+  box-shadow: inset 3px 0 0 var(--ek-deepflow);
+}
+.table tr.qualifies td {
+  background: var(--ek-surface-soft);
+}
+
 /* ----- Forms ------------------------------------------------------------ */
 
 label.field {

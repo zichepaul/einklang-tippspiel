@@ -60,6 +60,20 @@ export function isErrorResponse(x: AuthContext | HttpResponseInit): x is HttpRes
  * Wie requireAuth, prüft zusätzlich den Admin-Status (E-Mail in ADMIN_EMAILS).
  * Zweite Verteidigungslinie zusätzlich zur SWA-Rollenbeschränkung auf /api/admin/*.
  */
+/**
+ * Schützt von externen Schedulern (GitHub Actions) aufgerufene HTTP-Endpunkte
+ * über ein geteiltes Geheimnis im Header `x-cron-key` (App-Setting CRON_SECRET).
+ * @returns null wenn ok, sonst eine Fehlerantwort.
+ */
+export function requireCronKey(req: HttpRequest): HttpResponseInit | null {
+  const expected = process.env.CRON_SECRET;
+  const got = req.headers.get('x-cron-key');
+  if (!expected || !got || got !== expected) {
+    return unauthorized('Ungültiger oder fehlender Cron-Schlüssel.');
+  }
+  return null;
+}
+
 export async function requireAdmin(req: HttpRequest): Promise<AuthContext | HttpResponseInit> {
   const auth = requireAuth(req);
   if (isErrorResponse(auth)) return auth;

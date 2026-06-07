@@ -16,7 +16,11 @@
     "ALLOWED_EMAIL_DOMAIN": "einklang-energy.de",
 
     "TOURNAMENT_START_UTC": "2026-06-11T18:00:00Z",
-    "CHAMPION_BET_POINTS": "15"
+    "CHAMPION_BET_POINTS": "15",
+
+    "APP_URL": "https://<deine-swa>.azurestaticapps.net",
+    "CRON_SECRET": "<langes-zufalls-geheimnis>",
+    "TEAMS_WEBHOOK_URL": "<teams-incoming-webhook-bzw-workflow-url>"
   },
   "Host": {
     "LocalHttpPort": 7071,

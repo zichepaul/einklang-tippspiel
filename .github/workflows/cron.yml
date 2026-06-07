@@ -1,0 +1,41 @@
+name: Scheduled tasks (Sync & Reminder)
+
+# SWA Managed Functions unterstützen keine Timer-Trigger – daher triggert
+# GitHub Actions die HTTP-Endpunkte zeitgesteuert. Schutz über CRON_SECRET.
+# Hinweis: GitHub-Cron ist „best effort" und kann sich um einige Minuten verzögern.
+
+on:
+  schedule:
+    - cron: '*/10 * * * *' # Ergebnis-Sync alle 10 Minuten
+    - cron: '0 6 * * *' # täglicher Reminder ~08:00 Europe/Berlin (Sommerzeit)
+  workflow_dispatch: # manuelles Auslösen möglich
+
+permissions:
+  contents: read
+
+env:
+  BASE_URL: https://wonderful-rock-08d9fb803.7.azurestaticapps.net
+
+jobs:
+  sync:
+    # Sync läuft bei jedem Schedule und bei manuellem Start.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Spielplan-/Ergebnis-Sync
+        run: |
+          code=$(curl -s -o /tmp/out -w "%{http_code}" -X POST "$BASE_URL/api/cronsync" \
+            -H "x-cron-key: ${{ secrets.CRON_SECRET }}")
+          echo "HTTP $code"; cat /tmp/out; echo
+          test "$code" = "200"
+
+  reminder:
+    # Reminder nur beim täglichen 06:00-Schedule (nicht beim 10-Minuten-Lauf).
+    if: github.event.schedule == '0 6 * * *' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Teams-Reminder
+        run: |
+          code=$(curl -s -o /tmp/out -w "%{http_code}" -X POST "$BASE_URL/api/cronreminder" \
+            -H "x-cron-key: ${{ secrets.CRON_SECRET }}")
+          echo "HTTP $code"; cat /tmp/out; echo
+          test "$code" = "200"

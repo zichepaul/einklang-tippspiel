@@ -12,4 +12,6 @@ import './functions/adminResult';
 import './functions/adminSync';
 import './functions/adminUsers';
 import './functions/adminConfig';
-import './functions/syncTimer';
+// Zeitgesteuert über GitHub Actions (SWA Managed Functions unterstützen keine Timer):
+import './functions/cronsync';
+import './functions/cronreminder';

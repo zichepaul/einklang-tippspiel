@@ -21,6 +21,14 @@
       "statusCode": 404
     },
     {
+      "route": "/api/cronsync",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/api/cronreminder",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
       "route": "/api/*",
       "allowedRoles": ["authenticated"]
     },

@@ -128,30 +128,47 @@ export function MatchCard({ match, mode, onSaved }: Props) {
           </button>
         )}
 
-        {match.otherPredictions && match.otherPredictions.length > 0 && (
+        {match.otherPredictions && match.otherPredictions.length > 0 ? (
           <button
             className="btn btn-outline btn-sm"
             onClick={() => setShowOthers((s) => !s)}
             aria-expanded={showOthers}
           >
-            {showOthers ? 'Tipps ausblenden' : `Tipps (${match.otherPredictions.length})`}
+            {showOthers
+              ? 'Tipps ausblenden'
+              : `Alle Tipps anzeigen (${match.otherPredictions.length})`}
           </button>
+        ) : (
+          match.locked &&
+          match.status !== 'finished' && (
+            <span className="caption">Tipps der anderen sind ab Anpfiff sichtbar</span>
+          )
         )}
       </div>
 
       {showOthers && match.otherPredictions && (
         <div style={{ marginTop: 8 }}>
+          <p className="caption" style={{ marginBottom: 4 }}>
+            Tipps aller Teilnehmer (seit Anpfiff freigegeben):
+          </p>
           <table className="table" style={{ border: 'none' }}>
             <tbody>
-              {match.otherPredictions.map((p, i) => (
-                <tr key={i}>
-                  <td>{p.name}</td>
-                  <td className="num">
-                    {p.predHome}:{p.predAway}
-                  </td>
-                  <td className="num">{p.points != null ? `+${p.points}` : '–'}</td>
-                </tr>
-              ))}
+              {match.otherPredictions.map((p, i) => {
+                const exact =
+                  match.status === 'finished' &&
+                  p.predHome === match.resultHome &&
+                  p.predAway === match.resultAway;
+                return (
+                  <tr key={i}>
+                    <td>{p.name}</td>
+                    <td className="num" style={exact ? { fontWeight: 600, color: 'var(--ek-deepflow)' } : undefined}>
+                      {p.predHome}:{p.predAway}
+                      {exact ? ' ✓' : ''}
+                    </td>
+                    <td className="num">{p.points != null ? `+${p.points}` : '–'}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

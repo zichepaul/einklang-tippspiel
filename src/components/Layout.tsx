@@ -16,6 +16,7 @@ const navItems = [
   { to: '/tippen', label: 'Tippen' },
   { to: '/weltmeister', label: 'Weltmeister' },
   { to: '/spielplan', label: 'Spielplan' },
+  { to: '/tabellen', label: 'Tabellen' },
   { to: '/rangliste', label: 'Rangliste' },
   { to: '/profil', label: 'Profil' },
 ];

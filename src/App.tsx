@@ -7,6 +7,7 @@ import { LoginPage } from './pages/LoginPage';
 import { TippenPage } from './pages/TippenPage';
 import { WeltmeisterPage } from './pages/WeltmeisterPage';
 import { SpielplanPage } from './pages/SpielplanPage';
+import { TabellenPage } from './pages/TabellenPage';
 import { RanglistePage } from './pages/RanglistePage';
 import { ProfilPage } from './pages/ProfilPage';
 import { AdminPage } from './pages/AdminPage';
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/tippen" element={<TippenPage />} />
           <Route path="/weltmeister" element={<WeltmeisterPage />} />
           <Route path="/spielplan" element={<SpielplanPage />} />
+          <Route path="/tabellen" element={<TabellenPage />} />
           <Route path="/rangliste" element={<RanglistePage />} />
           <Route path="/profil" element={<ProfilPage me={me} />} />
           <Route
