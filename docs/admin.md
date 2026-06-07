@@ -19,7 +19,7 @@ serverseitig über `requireAdmin` abgesichert (Prüfung der E-Mail gegen die eff
 ### 1. Spielplan-Sync auslösen
 
 Lädt Spielplan und Ergebnisse von der Fußball-API und berechnet betroffene Tipps neu. Läuft
-zusätzlich automatisch per Timer (`SYNC_SCHEDULE`, Standard alle 10 Minuten).
+zusätzlich automatisch per GitHub-Actions-Cron (alle ~10 Minuten, `.github/workflows/cron.yml` → `/api/cronsync`).
 Endpunkt: `POST /api/runsync`.
 
 ### 2. Ergebnis manuell setzen / überschreiben
@@ -45,6 +45,6 @@ Weltmeister-Wette und der Admin-Liste. Endpunkt: `GET /api/showconfig`.
 
 ## Robustheit
 
-- API-Aufrufe verwenden Retry mit Backoff; ein API-Ausfall bricht den Timer nicht dauerhaft ab.
+- API-Aufrufe verwenden Retry mit Backoff; ein API-Ausfall bricht den nächsten geplanten Lauf nicht ab.
 - Die Punkteberechnung ist idempotent (absolute Werte) – mehrfacher Sync erzeugt keine doppelten
   Punkte.

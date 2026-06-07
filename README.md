@@ -32,7 +32,7 @@ Live-Rangliste. UI-Sprache: Deutsch.
 │   ├── components/                  # Layout, Logo, MatchCard, Toast, ErrorBoundary
 │   └── lib/                         # API-Client, Auth-Hook, Formatierung, Typen
 ├── api/                             # Azure Functions
-│   ├── src/functions/               # HTTP- & Timer-Funktionen
+│   ├── src/functions/               # HTTP-Funktionen (inkl. cron-gesicherte Endpunkte)
 │   ├── src/shared/                  # Punktelogik, Deadlines, Cosmos, Sync, Auth …
 │   ├── scripts/seed.ts              # Spielplan-Import
 │   └── src/shared/*.test.ts         # Unit-Tests (Punkte & Deadlines)
@@ -142,7 +142,7 @@ npm run seed
 npm --prefix api run seed -- --file scripts/sample-schedule.json
 ```
 
-Danach synchronisiert die Timer-Funktion Ergebnisse automatisch; ein manueller Sync ist im
+Danach synchronisiert ein GitHub-Actions-Cron die Ergebnisse automatisch (alle ~10 Min); ein manueller Sync ist im
 Admin-Bereich möglich.
 
 ---
@@ -160,7 +160,7 @@ Admin-Bereich möglich.
 > gekapselt und leicht austauschbar. Bis dahin lässt sich der Spielplan über den statischen Import
 > (Variante B) befüllen und per Admin-Bereich pflegen.
 
-API-Aufrufe laufen **immer serverseitig** (Timer- bzw. Admin-Funktion); der Key wird nie an den
+API-Aufrufe laufen **immer serverseitig** (Cron- bzw. Admin-Funktion); der Key wird nie an den
 Client ausgeliefert.
 
 ---
