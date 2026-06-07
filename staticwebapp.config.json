@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "auth": {
+    "rolesSource": "/api/roles",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/<TENANT_ID>/v2.0",
+          "clientIdSettingName": "AAD_CLIENT_ID",
+          "clientSecretSettingName": "AAD_CLIENT_SECRET"
+        },
+        "login": {
+          "loginParameters": ["domain_hint=einklang-energy.de"]
+        }
+      }
+    }
+  },
+  "routes": [
+    {
+      "route": "/login",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/.auth/login/github",
+      "statusCode": 404
+    },
+    {
+      "route": "/api/admin/*",
+      "allowedRoles": ["admin"]
+    },
+    {
+      "route": "/api/*",
+      "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/login",
+      "statusCode": 302
+    },
+    "403": {
+      "rewrite": "/index.html",
+      "statusCode": 200
+    }
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/assets/*", "*.svg", "*.png", "*.ico", "*.css", "*.js"]
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Content-Security-Policy": "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'"
+  },
+  "platform": {
+    "apiRuntime": "node:20"
+  }
+}

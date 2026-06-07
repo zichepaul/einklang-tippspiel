@@ -1,0 +1,27 @@
+{
+  "name": "einklang-tippspiel-api",
+  "version": "1.0.0",
+  "description": "Azure Functions Backend für das Einklang WM-2026-Tippspiel.",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build",
+    "start": "func start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "@azure/cosmos": "^4.1.1",
+    "@azure/functions": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.5",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}

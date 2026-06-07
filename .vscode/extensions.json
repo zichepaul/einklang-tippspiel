@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "Azure.azure-dev",
+    "ms-azuretools.vscode-azurefunctions",
+    "ms-azuretools.vscode-azurestaticwebapps",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

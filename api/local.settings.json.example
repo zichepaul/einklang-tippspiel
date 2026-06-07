@@ -1,0 +1,25 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+
+    "COSMOS_ENDPOINT": "https://<dein-cosmos-konto>.documents.azure.com:443/",
+    "COSMOS_KEY": "<cosmos-primary-key>",
+    "COSMOS_DATABASE": "tippspiel",
+
+    "FOOTBALL_API_PROVIDER": "football-data",
+    "FOOTBALL_API_KEY": "<football-data.org-token>",
+    "FOOTBALL_COMPETITION_CODE": "WC",
+
+    "ADMIN_EMAILS": "paul@einklang-energy.de,lucas@einklang-energy.de",
+    "ALLOWED_EMAIL_DOMAIN": "einklang-energy.de",
+
+    "TOURNAMENT_START_UTC": "2026-06-11T18:00:00Z",
+    "CHAMPION_BET_POINTS": "15"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*"
+  }
+}

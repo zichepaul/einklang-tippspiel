@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+api/node_modules/
+
+# Build output
+dist/
+api/dist/
+api/bin/
+api/obj/
+
+# Azure Functions local
+api/local.settings.json
+.azure/
+
+# Static Web Apps CLI
+.swa/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# Test / coverage
+coverage/

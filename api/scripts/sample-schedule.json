@@ -1,0 +1,38 @@
+[
+  {
+    "externalId": "wc2026-001",
+    "stage": "group",
+    "group": "A",
+    "matchday": 1,
+    "kickoffUtc": "2026-06-11T18:00:00Z",
+    "homeTeam": "Mexiko",
+    "awayTeam": "Team A2",
+    "status": "scheduled"
+  },
+  {
+    "externalId": "wc2026-002",
+    "stage": "group",
+    "group": "A",
+    "matchday": 1,
+    "kickoffUtc": "2026-06-11T21:00:00Z",
+    "homeTeam": "Team A3",
+    "awayTeam": "Team A4",
+    "status": "scheduled"
+  },
+  {
+    "externalId": "wc2026-101",
+    "stage": "round32",
+    "kickoffUtc": "2026-06-28T19:00:00Z",
+    "homeTeam": "Sieger Gruppe A",
+    "awayTeam": "Dritter B/E/F",
+    "status": "scheduled"
+  },
+  {
+    "externalId": "wc2026-104",
+    "stage": "final",
+    "kickoffUtc": "2026-07-19T19:00:00Z",
+    "homeTeam": "Finalist 1",
+    "awayTeam": "Finalist 2",
+    "status": "scheduled"
+  }
+]
