@@ -17,10 +17,6 @@
   },
   "routes": [
     {
-      "route": "/login",
-      "allowedRoles": ["anonymous", "authenticated"]
-    },
-    {
       "route": "/.auth/login/github",
       "statusCode": 404
     },
@@ -31,6 +27,22 @@
     {
       "route": "/api/*",
       "allowedRoles": ["authenticated"]
+    },
+    {
+      "route": "/login",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/assets/*",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/favicon.svg",
+      "allowedRoles": ["anonymous", "authenticated"]
+    },
+    {
+      "route": "/*.{css,js,png,svg,ico,woff,woff2,json,webmanifest}",
+      "allowedRoles": ["anonymous", "authenticated"]
     },
     {
       "route": "/*",
