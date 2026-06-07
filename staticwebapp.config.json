@@ -21,10 +21,6 @@
       "statusCode": 404
     },
     {
-      "route": "/api/admin/*",
-      "allowedRoles": ["admin"]
-    },
-    {
       "route": "/api/*",
       "allowedRoles": ["authenticated"]
     },

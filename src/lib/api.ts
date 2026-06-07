@@ -58,26 +58,26 @@ export const api = {
 
   getLeaderboard: () => request<{ leaderboard: LeaderboardRow[] }>('GET', '/leaderboard'),
 
-  // Admin
+  // Admin (einsegmentige Routen – SWA Managed Functions routen nach Funktionsnamen)
   adminGetUsers: () =>
     request<{ users: AdminUserRow[]; adminEmails: string[]; protectedAdmins: string[] }>(
       'GET',
-      '/admin/users',
+      '/adminUsers',
     ),
   adminSetAdmin: (email: string, isAdmin: boolean) =>
-    request<{ email: string; isAdmin: boolean; adminEmails: string[] }>('PUT', '/admin/users', {
+    request<{ email: string; isAdmin: boolean; adminEmails: string[] }>('PUT', '/adminUsers', {
       email,
       isAdmin,
     }),
   adminGetConfig: () =>
-    request<ConfigDto & { adminEmails: string[] }>('GET', '/admin/config'),
+    request<ConfigDto & { adminEmails: string[] }>('GET', '/adminConfig'),
   adminSetResult: (
     matchId: string,
     resultHome: number,
     resultAway: number,
     champion?: string,
   ) =>
-    request<{ predictionsScored: number; championScored: number }>('PUT', '/admin/result', {
+    request<{ predictionsScored: number; championScored: number }>('PUT', '/adminResult', {
       matchId,
       resultHome,
       resultAway,
@@ -90,5 +90,5 @@ export const api = {
       newlyFinished: number;
       predictionsScored: number;
       championScored: number;
-    }>('POST', '/admin/sync'),
+    }>('POST', '/adminSync'),
 };

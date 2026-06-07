@@ -79,6 +79,6 @@ export async function adminUsersHandler(
 app.http('adminUsers', {
   methods: ['GET', 'PUT'],
   authLevel: 'anonymous',
-  route: 'admin/users',
+  route: 'adminUsers',
   handler: adminUsersHandler,
 });

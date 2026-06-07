@@ -28,6 +28,6 @@ export async function adminSyncHandler(
 app.http('adminSync', {
   methods: ['POST'],
   authLevel: 'anonymous',
-  route: 'admin/sync',
+  route: 'adminSync',
   handler: adminSyncHandler,
 });

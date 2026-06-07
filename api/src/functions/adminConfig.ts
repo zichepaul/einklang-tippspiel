@@ -25,6 +25,6 @@ export async function adminConfigHandler(
 app.http('adminConfig', {
   methods: ['GET'],
   authLevel: 'anonymous',
-  route: 'admin/config',
+  route: 'adminConfig',
   handler: adminConfigHandler,
 });

@@ -67,6 +67,6 @@ export async function adminResultHandler(
 app.http('adminResult', {
   methods: ['PUT'],
   authLevel: 'anonymous',
-  route: 'admin/result',
+  route: 'adminResult',
   handler: adminResultHandler,
 });
