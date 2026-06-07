@@ -4,6 +4,7 @@ api/node_modules/
 
 # Build output
 dist/
+*.tsbuildinfo
 api/dist/
 api/bin/
 api/obj/
